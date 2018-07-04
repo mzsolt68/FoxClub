@@ -1,0 +1,32 @@
+﻿@model FoxClub.Models.Fox
+@{
+    ViewData["Title"] = "Programmer's Fox Club";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Information</h2>
+<ul>
+    <li><a href="/?Name=@Model.Name">Information</a></li>
+    <li><a href="/Nutritionstore?Name=@Model.Name">Nutrition Center</a></li>
+    <li><a href="/Trickcenter?Name=@Model.Name">Trick Center</a></li>
+</ul>
+<p><img src="/images/greenfox.png" /></p>
+<div>
+    This is @Model.Name. Currently living on @Model.Food and @Model.Drink.
+
+    @if (Model.KnownTricks.Count == 0)
+    {
+        <div>He doesn't know any trick.</div>
+    }
+    else
+    {
+        <div>He knows @Model.KnownTricks.Count tricks.</div>
+        <p><h1>Known tricks</h1></p>
+        foreach (Trick trick in Model.KnownTricks)
+        {
+            <ul>
+                <li>@trick.Description</li>
+            </ul>
+        }
+    }
+</div>
+

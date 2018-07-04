@@ -1,0 +1,26 @@
+﻿@model List<Trick>
+@{
+    ViewData["Title"] = "trickcenter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Trick center</h2>
+<ul>
+    <li><a href="/?Name=@ViewData["Name"]">Information</a></li>
+    <li><a href="/Nutritionstore?Name=@ViewData["Name"]">Nutrition Center</a></li>
+    <li><a href="/Trickcenter?Name=@ViewData["Name"]">Trick Center</a></li>
+</ul>
+<div>
+    <form action="/Addtrick" method="get">
+        Tricks: 
+        <input type="hidden" name="Name" value="@ViewData["Name"]" />
+        <select name="Trick">
+            @foreach(var trick in Model)
+            {
+                <option value="@trick.ID">@trick.Description</option>
+
+            }
+        </select>
+        <button type="submit">Learn</button>
+    </form>
+</div>
